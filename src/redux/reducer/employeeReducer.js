@@ -1,13 +1,7 @@
 import { ADD_EMPLOYEE, EDIT_EMPLOYEE, REMOVE_EMPLOYEE } from './../actions/employeeActions'
 
 const initialState = {
-  employees: [{
-    name: '',
-    email: '',
-    phone: '',
-    id: '',
-    editable: false
-  }]
+  employees: []
   /* todos: [
       { text: 'Agragar nuevo componente',
           id: '123',
