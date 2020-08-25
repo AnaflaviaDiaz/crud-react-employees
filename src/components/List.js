@@ -1,8 +1,9 @@
 import React from 'react';
 import RemoveImage from './../assets/quit.svg';
 import EditImage from './../assets/edit.png';
+import CheckImage from './../assets/tick.png';
 import { useSelector, useDispatch } from 'react-redux';
-import { removeEmployee } from '../redux/actions/employeeActions';
+import { removeEmployee, editEmployee } from '../redux/actions/employeeActions';
 
 const List = () => {
 
@@ -13,17 +14,21 @@ const List = () => {
     dispatch(removeEmployee(employee));
   };
 
+  const onEdit = (employee) => {
+    dispatch(editEmployee(employee));
+  };
+
   return (
-    <div>
+    <div className="px-1">
       <table>
         <thead>
-        <tr>
-          <th>Nombre y apellido</th> 
-          <th>Email</th> 
-          <th>Celular</th> 
-          <th>Edit</th> 
-          <th>Remove</th> 
-        </tr>
+          <tr>
+            <th>Nombre y apellido</th> 
+            <th>Email</th> 
+            <th>Celular</th> 
+            <th>Editar</th> 
+            <th>Eliminar</th> 
+          </tr>
         </thead>
         <tbody>
           {employees.map((employee) => (
@@ -32,8 +37,12 @@ const List = () => {
               <td>{employee.email}</td> 
               <td>{employee.phone}</td> 
               <td>
-                <button className="List-button-img">
-                  <img className="List-actions-icons" alt="edit" src={EditImage}></img>
+                <button className="List-button-img" onClick={() => onEdit(employee)}>
+                  {employee.isEditable ? (
+                    <img className="List-actions-icons" alt="check" src={CheckImage}></img>
+                  ): (
+                    <img className="List-actions-icons" alt="edit" src={EditImage}></img>
+                  )}
                 </button>
               </td> 
               <td>
@@ -46,7 +55,7 @@ const List = () => {
         </tbody>
       </table>
     </div>
-  )
-}
+  );
+};
 
-export default List
+export default List;

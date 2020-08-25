@@ -19,6 +19,12 @@ code {
 
 table {
   width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+}
+
+table, td, th {
+  border: 1px solid black;
 }
 
 .my-1 {
